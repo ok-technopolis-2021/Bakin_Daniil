@@ -1,2 +1,2 @@
 # Bakin_Daniil
-Fronted course tecgnopolis
+Fronted course technopolis
