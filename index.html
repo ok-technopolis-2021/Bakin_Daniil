@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Visit card</title>
+    <link href="style/style.css" rel="stylesheet"/>
 </head>
 <body>
-<div class="business-crad">
+<div class="business-card">
     <section class="cv-about">
         <section class="sv-about_main">
             <section class="sv_avatar">
-                <img src="res/photo.jpg" width="180px" alt="Employee photo">
+                <img id="avatar" src="res/photo.jpg" alt="Employee photo">
             </section>
             <section class="sv_name">Daniil Bakin</section>
             <section class="sv_position">Java developer</section>
             <section class="sv_contacts">
                 <section class="sv_github">
                     <a href="https://github.com/donebd">
-                        <img src="res/git.png" width="24px" alt="git">
+                        <img id="git" src="res/git.png" alt="git">
                     </a>
                 </section>
                 <section class="sv_vk">
                     <a href="https://vk.com/zhdunior">
-                    <img src="res/vk.png" width="24px" alt="vk">
+                        <img id="vk" src="res/vk.png" alt="vk">
                     </a>
                 </section>
                 <section class="sv_mail">
                     <a href="mailto:dinil.bd@mail.ru">
-                    <img src="res/mail.png" width="24px" alt="mail">
+                        <img id="mail" src="res/mail.png" alt="mail">
                     </a>
                 </section>
             </section>
             <section class="sv_download">
-                <button type="submit" onclick="window.open('res/cv.pdf')">Download CV</button>
+                <button id="download-button" type="submit" onclick="window.open('res/cv.pdf')">Download CV</button>
             </section>
         </section>
         <section class="sv_copyright">©2021 All rights reserved.</section>
