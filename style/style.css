@@ -1,5 +1,19 @@
 html {
     height: 100%;
+    --body-color: white;
+    --text-color: white;
+    --prime-color: #444444;
+    --second-color: #222222;
+    --contact-color: #dce1e8;
+}
+
+html[theme='dark'] {
+    height: 100%;
+    --body-color: #1a1a1a;
+    --text-color: #1a1a1a;
+    --prime-color: #ffffff;
+    --second-color: #a379f1;
+    --contact-color: #c0c0da;
 }
 
 body {
@@ -11,7 +25,8 @@ body {
     margin: 0;
     font-family: Helevetica, sans-serif;
     font-size: 20px;
-    color: white;
+    background: var(--body-color);
+    color: var(--body-color);
     line-height: 1.15;
 }
 
@@ -19,9 +34,8 @@ body {
     display: flex;
     width: 1127px;
     min-height: 595px;
-    background: #444444;
+    background: var(--prime-color);
     border-radius: 30px;
-
 }
 
 .cv-about {
@@ -39,52 +53,38 @@ body {
     margin-top: 70px;
 }
 
-.sv_name {
+.sv-about_avatar {
+    border-radius: 49%;
+    width: 180px;
+    height: 180px;
+    box-shadow: 12px 12px 20px var(--second-color);
+}
+
+.sv-about_name {
     font-size: 38px;
     margin-top: 25px;
     margin-bottom: 8px;
 }
 
-
-.sv_contacts {
+.sv-about_contacts {
     display: flex;
     margin-top: 16px;
     margin-bottom: 51px;
 }
 
-.sv_copyright {
-    display: flex;
-    font-size: 14px;
-    margin-top: 63px;
-    margin-bottom: 10px;
-}
-
-.avatar {
-    border-radius: 49%;
-    width: 180px;
-    height: 180px;
-    box-shadow: 12px 12px 5px rgba(0, 0, 0, 0.5);
-}
-
-.sv_github {
-    margin-right: 10px;
-}
-
-.vk, .git, .mail {
-    background: #dce1e8;
+.sv-about_contact-img {
+    background: var(--contact-color);
     border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
     width: 24px;
     height: 24px;
 }
 
-.sv_mail {
-    margin-left: 10px;
-}
-
-.download-button {
-    background-color: #444444;
-    border: white 3px solid;
-    color: white;
+.sv-about_download-button {
+    background-color: var(--prime-color);
+    border: var(--body-color) 3px solid;
+    color: var(--body-color);
     padding: 10px 29px;
     text-align: center;
     font-size: 17px;
@@ -92,15 +92,22 @@ body {
     transition: 0.5s;
 }
 
-.download-button:hover {
-    background-color: white;
-    color: black;
+.cv-about_copyright {
+    display: flex;
+    font-size: 14px;
+    margin-top: 63px;
+    margin-bottom: 10px;
 }
 
-.sv-content {
+.sv-about_download-button:hover {
+    background-color: var(--body-color);
+    color: var(--second-color);
+}
+
+.sv-content_main {
     display: flex;
     flex-direction: column;
-    background: #222222;
+    background: var(--second-color);
     width: 747px;
     border-radius: 30px;
     height: 100%;
@@ -108,10 +115,10 @@ body {
     align-items: center;
 }
 
-.content_name {
+.sv-content_name {
     font-size: 62px;
 }
 
-.content_position {
+.sv-content_position {
     font-size: 22px;
 }
