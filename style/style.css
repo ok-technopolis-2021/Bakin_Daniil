@@ -11,6 +11,7 @@ body {
     margin: 0;
     font-family: Helevetica, sans-serif;
     font-size: 20px;
+    color: white;
     line-height: 1.15;
 }
 
@@ -20,7 +21,7 @@ body {
     min-height: 595px;
     background: #444444;
     border-radius: 30px;
-    color: white;
+
 }
 
 .cv-about {
@@ -33,7 +34,6 @@ body {
 .sv-about_main {
     display: flex;
     flex-direction: column;
-    height: 430px;
     justify-self: center;
     align-items: center;
     margin-top: 70px;
@@ -48,7 +48,6 @@ body {
 
 .sv_contacts {
     display: flex;
-    flex-direction: row;
     margin-top: 16px;
     margin-bottom: 51px;
 }
@@ -57,21 +56,21 @@ body {
     display: flex;
     font-size: 14px;
     margin-top: 63px;
-    height: 25px;
+    margin-bottom: 10px;
 }
 
-#avatar {
+.avatar {
     border-radius: 49%;
     width: 180px;
     height: 180px;
-    box-shadow: 12px 12px 5px rgba(0,0,0,0.5);
+    box-shadow: 12px 12px 5px rgba(0, 0, 0, 0.5);
 }
 
 .sv_github {
     margin-right: 10px;
 }
 
-#vk, #git, #mail {
+.vk, .git, .mail {
     background: #dce1e8;
     border-radius: 50%;
     width: 24px;
@@ -82,7 +81,7 @@ body {
     margin-left: 10px;
 }
 
-#download-button {
+.download-button {
     background-color: #444444;
     border: white 3px solid;
     color: white;
@@ -93,7 +92,7 @@ body {
     transition: 0.5s;
 }
 
-#download-button:hover{
+.download-button:hover {
     background-color: white;
     color: black;
 }
