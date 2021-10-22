@@ -53,8 +53,8 @@ body {
     margin-top: 70px;
 }
 
-.sv-about_avatar {
-    border-radius: 49%;
+.sv-about_avatar-img {
+    border-radius: 50%;
     width: 180px;
     height: 180px;
     box-shadow: 12px 12px 20px var(--second-color);
