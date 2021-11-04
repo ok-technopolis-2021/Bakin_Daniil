@@ -7,11 +7,11 @@ checkbox.onclick = function () {
     } else {
         document.documentElement.setAttribute('theme', 'light');
     }
-}
+};
 
 function transition() {
     document.documentElement.classList.add('transition');
     setTimeout(function () {
         document.documentElement.classList.remove('transition');
-    }, 250)
+    }, 250);
 }
