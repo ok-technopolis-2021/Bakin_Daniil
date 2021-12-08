@@ -7,80 +7,85 @@ const image = require('gulp-image');
 
 const assetsPath = 'src/assets/*';
 const stylesPath = './src/styles/**/*.scss';
-const jsPath = 'src/**/*.js';
-const htmlPath = './src/index.html';
+const jsPath = 'src/scripts/*.js';
+const htmlPath = './src/pages/*.html';
 const distPath = './dist/';
-const rollupConfig = {
-input: 'src/change_theme.js',
-plugins: [
-// Не используем в rollup, используем это в gulp
-// scss(), // will output compiled styles to output.css
-// html({ template }),
+const rollupConfig = [
+    {
+        input: 'src/scripts/change_theme.js'
+    }, {
+        input: 'src/scripts/skills.js'
+    }
 ]
-}
+
 
 const imageOptimizingSettings = {
-pngquant: true,
-optipng: true,
-zopflipng: true,
-mozjpeg: true,
-gifsicle: true,
-svgo: true,
-concurrent: 10,
+    pngquant: true,
+    optipng: true,
+    zopflipng: true,
+    mozjpeg: true,
+    gifsicle: true,
+    svgo: true,
+    concurrent: 10,
 };
 
 /**
  * Описание задачи на сборку javascript, с помощью rollup
  */
 gulp.task('rollup', async (done) => {
-const bundle = await rollup.rollup(rollupConfig);
+    const bundle = await rollup.rollup(rollupConfig[0]);
 
-bundle.write({
-format: 'esm',
-file: 'dist/change_theme.js'
-});
+    bundle.write({
+        format: 'esm',
+        file: 'dist/scripts/change_theme.js'
+    });
 
-done();
+    const bundle1 = await rollup.rollup(rollupConfig[1]);
+
+    bundle1.write({
+        format: 'esm',
+        file: 'dist/scripts/skills.js'
+    });
 });
 
 /**
-* Простая задача на компиляцию scss файлов в файл style.css, ее отличие от rollup плагина rollup-plugin-scss
-* в том, что файлы подключаются по маске, а в rollup они подключаются явно через import
-**/
+ * Простая задача на компиляцию scss файлов в файл style.css, ее отличие от rollup плагина rollup-plugin-scss
+ * в том, что файлы подключаются по маске, а в rollup они подключаются явно через import
+ **/
 gulp.task('css', () => {
-return gulp.src(stylesPath)
-.pipe(less())
-.pipe(concat('style.css'))
-.pipe(gulp.dest(distPath));
+    return gulp.src(stylesPath)
+        .pipe(less())
+        .pipe(concat('style.css'))
+        .pipe(gulp.dest(distPath));
 });
 
 /**
-* Вотчинг всех файлов которые мы
-**/
+ * Вотчинг всех файлов которые мы
+ **/
 gulp.task('watch', function (done) {
-gulp.watch(stylesPath, gulp.series('css'));
-gulp.watch(jsPath, gulp.series('rollup'));
-done();
+    gulp.watch(stylesPath, gulp.series('css'));
+    gulp.watch(jsPath, gulp.series('rollup'));
+    done();
 });
 
 /**
  * Копирование картинок и прочего из папки assets, картинки обжимаются с помощью наастроек imageOptimizingSettings
  */
 gulp.task('assets', function () {
-return gulp.src(assetsPath)
-.pipe(image(imageOptimizingSettings))
-.pipe(gulp.dest(`${distPath}/assets/`));
+    return gulp.src(assetsPath)
+        .pipe(image(imageOptimizingSettings))
+        .pipe(gulp.dest(`${distPath}/assets/`));
 });
 
 /**
  * Описание задачи на вставку js & css файлов в наш шаблон index.html
  */
 gulp.task('html', function () {
-const target = gulp.src(htmlPath);
-const sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], { read: false });
+    const target = gulp.src(htmlPath);
+    const sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
 
-return target.pipe(inject(sources, { ignorePath: '../dist', relative: true, addPrefix: '.' }))
-.pipe(gulp.dest(distPath));
+    return target.pipe(inject(sources, {ignorePath: '../dist', relative: true, addPrefix: '.'}))
+        .pipe(gulp.dest(distPath));
 });
 
 gulp.task('default', gulp.series('rollup', 'css', 'assets', 'html', 'watch'));
