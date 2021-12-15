@@ -10,13 +10,9 @@ const stylesPath = './src/styles/**/*.scss';
 const jsPath = 'src/scripts/*.js';
 const htmlPath = './src/pages/*.html';
 const distPath = './dist/';
-const rollupConfig = [
-    {
-        input: 'src/scripts/change_theme.js'
-    }, {
-        input: 'src/scripts/skills.js'
-    }
-]
+const rollupConfig = {
+    input: 'src/scripts/main.js'
+}
 
 
 const imageOptimizingSettings = {
@@ -33,19 +29,13 @@ const imageOptimizingSettings = {
  * Описание задачи на сборку javascript, с помощью rollup
  */
 gulp.task('rollup', async (done) => {
-    const bundle = await rollup.rollup(rollupConfig[0]);
+    const bundle = await rollup.rollup(rollupConfig);
 
-    bundle.write({
-        format: 'esm',
-        file: 'dist/scripts/change_theme.js'
+    await bundle.write({
+        format: 'iife',
+        file: 'dist/scripts/main.js'
     });
 
-    const bundle1 = await rollup.rollup(rollupConfig[1]);
-
-    bundle1.write({
-        format: 'esm',
-        file: 'dist/scripts/skills.js'
-    });
 });
 
 /**
