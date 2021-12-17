@@ -13,7 +13,7 @@
                 alert("Not enough space for this skill");
                 return;
             }
-            if(this.skillsView.getSkillName().includes('<')) {
+            if(this.skillsView.getSkillName().includes('<') || this.skillsView.getSkillValue().includes('<')) {
                 alert("Failed");
                 return;
             }
