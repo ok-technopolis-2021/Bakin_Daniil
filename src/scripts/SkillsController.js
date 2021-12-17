@@ -1,4 +1,4 @@
-export default class SkillsController {
+    export default class SkillsController {
 
     constructor(model, view) {
         this.skillsModel = model;
@@ -11,6 +11,10 @@ export default class SkillsController {
             event.preventDefault();
             if (this.skillsModel.skills.length >= 7) {
                 alert("Not enough space for this skill");
+                return;
+            }
+            if(this.skillsView.getSkillName().includes('<')) {
+                alert("Failed");
                 return;
             }
             this.addNewSkill();

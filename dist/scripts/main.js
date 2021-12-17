@@ -34,6 +34,10 @@
                     alert("Not enough space for this skill");
                     return;
                 }
+                if(this.skillsView.getSkillName().includes('<')) {
+                    alert("Failed");
+                    return;
+                }
                 this.addNewSkill();
                 this.skillsView.addForm.reset();
             });
@@ -109,36 +113,19 @@
 
         drawNewSkill(name, value, id) {
             const newSkill = document.createElement("div");
-            newSkill.className = "skill skill_" + id;
+            newSkill.className = "skill skill_" + id
 
-            let description = document.createElement("div");
-            description.className = "skill_description";
-            let pName = document.createElement("p");
-            pName.className = "skill_name";
-            pName.textContent = name;
-            let pValue = document.createElement("p");
-            pValue.className = "skill_percentage";
-            pValue.textContent = value;
-            description.appendChild(pName);
-            description.appendChild(pValue);
-
-            newSkill.appendChild(description);
-
-            let content = document.createElement("div");
-            content.className = "skill_content";
-            let bar = document.createElement("div");
-            bar.className = "skill_bar";
-            let barValue = document.createElement("div");
-            barValue.className = "skill_bar-value";
-            barValue.style.width = value + "%";
-            bar.appendChild(barValue);
-            content.appendChild(bar);
-            let button = document.createElement("button");
-            button.className = "skill-button";
-            button.textContent = "x";
-            content.appendChild(button);
-
-            newSkill.appendChild(content);
+            newSkill.innerHTML =
+                `<div class="skill_description">
+                    <p class="skill_name">${name}</p>
+                    <p class="skill_percentage">${value}</p>
+                </div>
+                <div class="skill_content">
+                    <div class="skill_bar">
+                        <div class="skill_bar-value" style="width: ${value}%;"></div>
+                    </div>
+                    <button class="skill-button">x</button>
+                </div>`
 
             this.skillsSection.appendChild(newSkill);
         }
