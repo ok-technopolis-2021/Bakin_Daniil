@@ -5,6 +5,7 @@ html {
     --prime-color: #444444;
     --second-color: #222222;
     --contact-color: #dce1e8;
+    --gradient: linear-gradient(90deg,#77139c, #1a82eb);
 }
 
 html[theme='dark'] {
@@ -14,6 +15,7 @@ html[theme='dark'] {
     --prime-color: #ffffff;
     --second-color: #a379f1;
     --contact-color: #c0c0da;
+    --gradient: linear-gradient(90deg, #ffc071, #2bcf75);
 }
 
 body {
@@ -38,7 +40,7 @@ body {
     border-radius: 30px;
 }
 
-.cv-about {
+.sv-about {
     display: flex;
     flex-direction: column;
     width: 380px;
@@ -81,27 +83,37 @@ body {
     height: 24px;
 }
 
-.sv-about_download-button {
-    background-color: var(--prime-color);
-    border: var(--body-color) 3px solid;
-    color: var(--body-color);
-    padding: 10px 29px;
-    text-align: center;
-    font-size: 17px;
+.button {
     border-radius: 32px;
     transition: 0.5s;
+    text-align: center;
+    background-color: var(--prime-color);
+    border: var(--body-color) 2px solid;
+    color: var(--body-color);
 }
 
-.cv-about_copyright {
+.button:hover {
+    background-color: var(--body-color);
+    color: var(--second-color);
+}
+
+.sv-about_download-button {
+    padding: 10px 29px;
+    font-size: 17px;
+}
+
+.sv-content_skillsButton {
+    border: var(--body-color) 2px solid;
+    margin-top: 15px;
+    padding: 5px 10px;
+    font-size: 17px;
+}
+
+.sv-about_copyright {
     display: flex;
     font-size: 14px;
     margin-top: 63px;
     margin-bottom: 10px;
-}
-
-.sv-about_download-button:hover {
-    background-color: var(--body-color);
-    color: var(--second-color);
 }
 
 .sv-content_main {
